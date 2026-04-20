@@ -27,12 +27,12 @@ public class Administrador extends Thread {
                 } else {
                     int numero = (int)(Math.random() * 21);
                     // es anómalo → buzonAlertas
-                    if (numero % 4 == 0) {
-                        System.out.println("Broker " + evento.getId() + " envió alerta: " + evento.getId());
+                    if (numero % 4 != 0) {
+                        System.out.println("Administrador" + evento.getId() + " envió alerta: " + evento.getId());
                     // es normal → buzonClasificacion
                     } else {
                     buzonClasificacion.agregar(evento);
-                    System.out.println("Broker " + evento.getId() + " enviado a buzonClasificacion");
+                    System.out.println("Administrador" + evento.getId() + " enviado a buzonClasificacion");
                 }
                 }
             }
