@@ -15,7 +15,7 @@ public class Administrador extends Thread {
     @Override
     public void run() {
         try {
-            while (true) {
+            while(true) {
                 Evento evento = buzonAlertas.retirar();
                 if (evento.isEsFin()) {
                     System.out.println("Administrador recibió señal de fin.");
