@@ -25,6 +25,15 @@ public class Buzon {
         notifyAll();
     }
 
+     public synchronized boolean intentarAgregar(Evento e) {
+        if (capacidad != -1 && cola.size() >= capacidad){
+            return false;
+        }
+        cola.add(e);
+        notifyAll();
+        return true;
+    }
+
     public synchronized Evento retirar() throws InterruptedException {
         while (cola.isEmpty()) {
             wait();
@@ -33,4 +42,6 @@ public class Buzon {
         notifyAll();
         return e;
     }
+
+   
 }

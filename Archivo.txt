@@ -1,7 +1,0 @@
-nSensores = 3
-base = 5
-nClasificadores = 2
-nServidores = 3
-tam1 = 10
-tam2 = 10
-

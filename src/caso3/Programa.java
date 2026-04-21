@@ -6,7 +6,7 @@ import java.io.FileReader;
 public class Programa {
     public static void main(String[] args) {
     try {
-        BufferedReader br = new BufferedReader(new FileReader("Archivo.txt"));
+        BufferedReader br = new BufferedReader(new FileReader(args[0])); //pasan el nombre por consola, con el txt
         int nSensores = Integer.parseInt(br.readLine().split("=")[1].trim());
         int base = Integer.parseInt(br.readLine().split("=")[1].trim());
         int nClasificadores = Integer.parseInt(br.readLine().split("=")[1].trim());

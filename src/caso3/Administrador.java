@@ -20,7 +20,10 @@ public class Administrador extends Thread {
                 if (evento.isEsFin()) {
                     System.out.println("Administrador recibió señal de fin.");
                     for (int i = 0; i < nClasificadores; i++) {
-                      buzonClasificacion.agregar(new Evento("FIN", 0, true));
+                        Evento eventoFin = new Evento("FIN", 0, true);
+                        while (!buzonClasificacion.intentarAgregar(eventoFin)){
+                            Thread.yield();
+                        }
                     }
                 break;
                 
@@ -28,11 +31,13 @@ public class Administrador extends Thread {
                     int numero = (int)(Math.random() * 21);
                     // es anómalo → buzonAlertas
                     if (numero % 4 != 0) {
-                        System.out.println("Administrador" + evento.getId() + " envió alerta: " + evento.getId());
+                        System.out.println("Administrador: " + evento.getId() + " era malicioso. Fue descartado: " + evento.getId());
                     // es normal → buzonClasificacion
                     } else {
-                    buzonClasificacion.agregar(evento);
-                    System.out.println("Administrador" + evento.getId() + " enviado a buzonClasificacion");
+                    while(!buzonClasificacion.intentarAgregar(evento)){
+                        Thread.yield();
+                    }
+                    System.out.println("Administrador: " + evento.getId() + " era inofensivo. Enviado a buzonClasificacion.");
                 }
                 }
             }

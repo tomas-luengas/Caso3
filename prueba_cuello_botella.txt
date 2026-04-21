@@ -1,6 +1,6 @@
-6
-20
-2
-2
-1
-1
+nSensores=6
+base=20
+nClasificadores=2
+nServidores=2
+tam1=1
+tam2=1

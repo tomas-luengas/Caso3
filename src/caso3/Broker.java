@@ -30,7 +30,9 @@ public class Broker extends Thread {
                     System.out.println("Broker " + id + " envió alerta: " + evento.getId());
                 // es normal → buzonClasificacion
                     } else {
-                    buzonClasificacion.agregar(evento);
+                    while (!buzonClasificacion.intentarAgregar(evento)) {
+                        Thread.yield();
+                    }
                     System.out.println("Broker " + id + " envió a clasificar: " + evento.getId());
                 }
             }
